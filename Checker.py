@@ -12,5 +12,5 @@ while True:
 	if f'{actual}' != f'{noww}':
 		print("yeeeeeee")
 		sleep(4)
-		system('pkill py* && sleep 1 && screen python3.6 Checker.py')
+		system('pkill py* && sleep 1 && screen python3.6 Checker.py BotSpy.py && screen python3.6 BotSpy.py')
 		
