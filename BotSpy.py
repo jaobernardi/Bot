@@ -9,11 +9,6 @@ import dhooks
 from pathlib import Path
 client = discord.Client()
 hook = dhooks.Webhook('https://discordapp.com/api/webhooks/516092910081409058/dQ1YJOs3qwD57lM6CH9nhChJyhVO39Oc1YchGpUQE3f1qvpHIu8EXptI-_qlXUVxBjkG')
-help_embed=discord.Embed(title="Help me!", description="Aqui estão todos os comandos disponivéis!")
-help_embed.add_field(name="Misc", value=f"{prefix}say -» *Faça eu dizer algo!*\n{prefix}avatar -» *Veja seu avatar ou de outro usuario ;)*\n{prefix}perfil -» *mostra seu perfil ou o de outro usuario :)*\n{prefix}say -»", inline=False)
-help_embed.add_field(name="Administrativo", value="n", inline=False)
-help_embed.add_field(name="Musica", value="n", inline=False)
-help_embed.add_field(name="Comandos Personalizados", value="n", inline=False)
 def ServerInfo(id):
 	server_path = Path(f"Servers/{id}.json")
 	if server_path.exists():
@@ -30,6 +25,11 @@ async def on_message(message):
 	server_info = ServerInfo(f"{message.server.id}")
 	prefix = server_info['prefix']
 	command = message.content.lower().startswith
+	help_embed=discord.Embed(title="Help me!", description="Aqui estão todos os comandos disponivéis!")
+	help_embed.add_field(name="Misc", value=f"{prefix}say -» *Faça eu dizer algo!*\n{prefix}avatar -» *Veja seu avatar ou de outro usuario ;)*\n{prefix}perfil -» *mostra seu perfil ou o de outro usuario :)*\n{prefix}say -»", inline=False)
+	help_embed.add_field(name="Administrativo", value="n", inline=False)
+	help_embed.add_field(name="Musica", value="n", inline=False)
+	help_embed.add_field(name="Comandos Personalizados", value="n", inline=False)
 	if command(prefix):
 		args = message.content.split(" ")
 		if command(prefix + "help"):
