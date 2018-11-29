@@ -29,7 +29,6 @@ async def on_message(message):
 		args = message.content.split(" ")
 		if command(prefix + "help"):
 			await client.send_message(message.channel, "Version: ALPHA 1 SNPSHT:BG01")
-		
 @client.event
 async def on_ready():
 	await client.change_status(game=discord.Game(name='Jogos! ;)'))
