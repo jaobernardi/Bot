@@ -10,7 +10,6 @@ from pathlib import Path
 #Hello World
 client = discord.Client()
 hook = dhooks.Webhook('https://discordapp.com/api/webhooks/516092910081409058/dQ1YJOs3qwD57lM6CH9nhChJyhVO39Oc1YchGpUQE3f1qvpHIu8EXptI-_qlXUVxBjkG')
-msg = 'PANDA CORNUDA\nPANDA CORNUDA\nPANDA CORNUDA\nPANDA CORNUDA\nPANDA CORNUDA\nPANDA CORNUDA\nPANDA CORNUDA\nPANDA CORNUDA\nPANDA CORNUDA\nPANDA CORNUDA\nPANDA CORNUDA\nPANDA CORNUDA\nPANDA CORNUDA\nPANDA CORNUDA\nPANDA CORNUDA\nPANDA CORNUDA\nPANDA CORNUDA\nPANDA CORNUDA\n'
 def ServerInfo(id):
 	server_path = Path(f"Servers/{id}.json")
 	if server_path.exists():
