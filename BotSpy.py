@@ -15,6 +15,7 @@ def ServerInfo(id):
 	if server_path.exists():
 		info = json.load(open(f'Servers/{id}.json'))
 		return info
+		
 	else:
 		with open(f'Servers/{id}.json', 'w') as f:
 			x = json.load(open(f'ServerBase.json'))
