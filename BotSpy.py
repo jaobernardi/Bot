@@ -13,6 +13,9 @@ def ServerInfo(id):
 	server_path = Path(f"Servers/{id}.json")
 	if server_path.exists():
 		info = json.load(open(f'Servers/{id}.json'))
+		if not info['commands']:
+			info['commands'] = "0"
+			f.write(json.dumps(info))
 		return info		
 	else:
 		with open(f'Servers/{id}.json', 'w') as f:
@@ -29,7 +32,8 @@ async def on_message(message):
 	help_embed.add_field(name="Misc", value=f"{prefix}say -» *Faça eu dizer algo!*\n{prefix}avatar -» *Veja seu avatar ou de outro usuario ;)*\n{prefix}perfil -» *mostra seu perfil ou o de outro usuario :)*\n{prefix}say -»", inline=False)
 	help_embed.add_field(name="Administrativo", value="n", inline=False)
 	help_embed.add_field(name="Musica", value="n", inline=False)
-	help_embed.add_field(name="Comandos Personalizados", value="n", inline=False)
+	if server_info['commands'] == "0":
+		help_embed.add_field(name="Comandos Personalizados", value="*Nenhum comando foi encontrado :(*", inline=False)
 	if command(prefix):
 		args = message.content.split(" ")
 		if command(prefix + "help"):
