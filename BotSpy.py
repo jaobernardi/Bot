@@ -30,10 +30,8 @@ async def on_message(message):
 		if command(prefix + "help"):
 			await client.send_message(message.channel, "Version: ALPHA 1 SNPSHT:BG01")
 		
-#leel
 @client.event
 async def on_ready():
 	await client.change_status(game=discord.Game(name='Jogos! ;)'))
 	print(f"[+] Logged as {client.user.name}")
 client.run(f"NTE2MTE2MTkzMDQ0NzI1Nzgw.Dtu-yg.8y-5tV-e4qqmE9Uhub5sWio4w7g")
-	
