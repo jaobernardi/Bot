@@ -2,10 +2,10 @@ from time import sleep
 from sys import argv
 from os import system
 while True:
-	actual = open(f'{argv[0]}', 'r').read()
+	actual = open(f'{argv[1]}', 'r').read()
 	sleep(1)
 	system('git pull')
-	noww = open(f'{argv[0]}', 'r').read()
+	noww = open(f'{argv[1]}', 'r').read()
 	print("yooo")
 	if actual == noww:
 		print("yup")
