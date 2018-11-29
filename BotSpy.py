@@ -22,6 +22,7 @@ def ServerInfo(id):
 			f.write(json.dumps(x))
 			return x
 			
+			
 @client.event
 async def on_message(message):
 	server_info = ServerInfo(f"{message.server.id}")
