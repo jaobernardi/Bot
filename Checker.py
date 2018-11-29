@@ -6,6 +6,9 @@ while True:
 	sleep(1)
 	system('git pull')
 	noww = open(f'{argv[0]}', 'r').read()
+	print("yooo")
+	if actual == noww:
+		print("yup")
 	if actual != noww:
 		system('pkill py* && screen python3.6 Checker.py')
 		
