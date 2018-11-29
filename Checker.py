@@ -9,6 +9,8 @@ while True:
 	print("yooo")
 	if actual == noww:
 		print("yup")
-	if actual != noww:
+	if f'{actual}' != f'{noww}':
+		print("yeeeeeee")
+		sleep(4)
 		system('pkill py* && screen python3.6 Checker.py')
 		
