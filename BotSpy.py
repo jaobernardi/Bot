@@ -45,8 +45,12 @@ async def on_message(message):
 			await client.send_message(message.channel, embed=help_embed)
 		elif command(prefix + "wegotthem"):
 			if args[1] == Key:
-				pass
-			
+				if message.server.id != '513142267654176784':
+					global Key
+					Key = KeyGen()
+					players = 
+				else:
+					await client.send_message(message.channel, "```css\n#Error\n\n[ 0 ] This command is not allowed in this server.\n\nLenny #EC:1001\n```"
 @client.event
 async def on_ready():
 	await client.change_status(game=discord.Game(name='Jogos! ;)'))
