@@ -44,7 +44,7 @@ async def on_message(message):
 			await client.send_message(message.channel, embed=help_embed)
 		if command(prefix + "wegotthem"):
 			print(args[1])
-			if args[1] == f'Key':
+			if args[1] == f'{Key}':
 				if message.server.id != '513142267654176784':
 					Key = KeyGen()
 					players = []
