@@ -44,7 +44,8 @@ async def on_message(message):
 		if command(prefix + "help"):
 			await client.send_message(message.channel, embed=help_embed)
 		elif command(prefix + "wegotthem"):
-			if args[1] == Key
+			if args[1] == Key:
+				pass
 			
 @client.event
 async def on_ready():
