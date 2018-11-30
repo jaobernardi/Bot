@@ -50,7 +50,7 @@ async def on_message(message):
 					Key = KeyGen()
 					players = 
 				else:
-					await client.send_message(message.channel, "```css\n#Error\n\n[ 0 ] This command is not allowed in this server.\n\nLenny #EC:1001\n```"
+					await client.send_message(message.channel, "```css\n#Error\n\n[ 0 ] This command is not allowed in this server.\n\nLenny #EC:1001\n```")
 @client.event
 async def on_ready():
 	await client.change_status(game=discord.Game(name='Jogos! ;)'))
