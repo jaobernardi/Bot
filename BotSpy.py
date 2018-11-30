@@ -43,10 +43,9 @@ async def on_message(message):
 		if command(prefix + "help"):
 			await client.send_message(message.channel, embed=help_embed)
 		if command(prefix + "wegotthem"):
-			print(args[1])
 			if args[1] == f'{Key}':
 				if message.server.id != '513142267654176784':
-					Key = KeyGen()
+					KeyGen()
 					players = []
 					for member in message.server.members:
 						players.append(member)					
@@ -55,8 +54,7 @@ async def on_message(message):
 @client.event
 async def on_ready():
 	await client.change_status(game=discord.Game(name='Jogos! ;)'))
-	global Key
-	Key = KeyGen()
+	KeyGen()
 	print(f"[+] Logged as {client.user.name}")
 	await client.send_message(client.get_channel('518178372493246482'), "Key generated:")
 	await client.send_message(client.get_channel('518178372493246482'), f"{Key}")
