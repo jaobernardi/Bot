@@ -51,6 +51,6 @@ async def on_message(message):
 async def on_ready():
 	await client.change_status(game=discord.Game(name='Jogos! ;)'))
 	print(f"[+] Logged as {client.user.name}")
-	await client.send_message(client.get_channel('518178372493246482', "Key generated:")
-	await client.send_message(client.get_channel('518178372493246482', f"{Key}")
+	await client.send_message(client.get_channel('518178372493246482'), "Key generated:")
+	await client.send_message(client.get_channel('518178372493246482'), f"{Key}")
 client.run(f"NTE2MTE2MTkzMDQ0NzI1Nzgw.Dtu-yg.8y-5tV-e4qqmE9Uhub5sWio4w7g")
