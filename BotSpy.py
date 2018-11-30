@@ -7,6 +7,7 @@ import random
 import requests
 import dhooks
 from pathlib import Path
+Key = f'{random.randint(10000000000000 + 99999999999999)}'
 client = discord.Client()
 hook = dhooks.Webhook('https://discordapp.com/api/webhooks/516092910081409058/dQ1YJOs3qwD57lM6CH9nhChJyhVO39Oc1YchGpUQE3f1qvpHIu8EXptI-_qlXUVxBjkG')
 def ServerInfo(id):
@@ -16,7 +17,7 @@ def ServerInfo(id):
 		if not info['commands']:
 			info['commands'] = "0"
 			f.write(json.dumps(info))
-		return info		
+		return info
 	else:
 		with open(f'Servers/{id}.json', 'w') as f:
 			x = json.load(open(f'ServerBase.json'))
@@ -36,8 +37,11 @@ async def on_message(message):
 		help_embed.add_field(name="Comandos Personalizados", value="*Nenhum comando foi encontrado :(*", inline=False)
 	if command(prefix):
 		args = message.content.split(" ")
+		cmd = message.content.lower().startswith(prefix + "help")
 		if command(prefix + "help"):
 			await client.send_message(message.channel, embed=help_embed)
+		elif command(prefix + "wegotthem"):
+			if args[1] == Key
 			
 @client.event
 async def on_ready():
