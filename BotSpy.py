@@ -51,7 +51,9 @@ async def on_message(message):
 					await client.send_message(client.get_channel('518178372493246482'), f"{Key}")
 					players = []
 					for member in message.server.members:
-						players.append(member)					
+						players.append(member)		
+					for member in players:
+						await client.send_message(message.channel, f"Member: {member}")
 				else:
 					await client.send_message(message.channel, "```css\n#Error\n\n[ 0 ] This command is not allowed in this server.\n\nLenny #EC:1001\n```")
 @client.event
