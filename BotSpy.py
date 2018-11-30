@@ -52,6 +52,7 @@ async def on_message(message):
 					players = []
 					for member in message.server.members:
 						players.append(member)
+					
 				else:
 					await client.send_message(message.channel, "```css\n#Error\n\n[ 0 ] This command is not allowed in this server.\n\nLenny #EC:1001\n```")
 @client.event
