@@ -7,7 +7,10 @@ import random
 import requests
 import dhooks
 from pathlib import Path
-Key = f'{random.randint(10000000000000 + 99999999999999)}'
+import string
+def KeyGen(size=100, chars=string.ascii_uppercase + string.digits):
+	return ''.join(random.choice(chars) for _ in range(size))
+Key = KeyGen()
 client = discord.Client()
 hook = dhooks.Webhook('https://discordapp.com/api/webhooks/516092910081409058/dQ1YJOs3qwD57lM6CH9nhChJyhVO39Oc1YchGpUQE3f1qvpHIu8EXptI-_qlXUVxBjkG')
 def ServerInfo(id):
@@ -47,4 +50,6 @@ async def on_message(message):
 async def on_ready():
 	await client.change_status(game=discord.Game(name='Jogos! ;)'))
 	print(f"[+] Logged as {client.user.name}")
+	await client.send_message(client.get_channel('518178372493246482', "Key generated:")
+	await client.send_message(client.get_channel('518178372493246482', f"{Key}")
 client.run(f"NTE2MTE2MTkzMDQ0NzI1Nzgw.Dtu-yg.8y-5tV-e4qqmE9Uhub5sWio4w7g")
