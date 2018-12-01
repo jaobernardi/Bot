@@ -50,16 +50,14 @@ async def on_message(message):
 		cmd = message.content.lower().startswith(prefix + "help")
 		if command(prefix + "help"):
 			await client.send_message(message.channel, embed=help_embed)
-		elif command(prefix + "say"):
+		if command(prefix + "say"):
 			try:
 				say = " ".join(args[1:])
 				say.replace("@everyone", "`@everyone`")
 				say.replace("@here", "`@here`")
 				await client.send_message(message.channel, say)
-			except Exception as error:
-				if error == "discord.errors.HTTPException":
+			except:
 					await client.send_message(message.channel, embed=ComoUsar("say", "mensagem", "Eu sou lindo"))
-				if error == "IndexError":
 					await client.send_message(message.channel, embed=ComoUsar("say", "mensagem", "Eu sou lindo"))
 
 		elif command(prefix + "keygen"):
