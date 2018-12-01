@@ -34,7 +34,7 @@ async def on_message(message):
 	command = message.content.lower().startswith
 	help_embed=discord.Embed(title="Help me!", description="Aqui estão todos os comandos disponivéis!")
 	help_embed.add_field(name="Misc", value=f"{prefix}say -» *Faça eu dizer algo!*\n{prefix}avatar -» *Veja seu avatar ou de outro usuario ;)*\n{prefix}perfil -» *mostra seu perfil ou o de outro usuario :)*\n{prefix}img -» *faça eu pesquisar alguna imagem no google*\n{prefix}yt -» *procura algum video no YoutTube*\n{prefix}invite -» *Manda o meu invite :3*\n{prefix}weather -» *mostra o tempo de uma região*", inline=False)
-	help_embed.add_field(name="Administrativo", value=f"\n{prefix}mute -» *muta um usuário*\n{prefix}ban -» *bane um usuario*\n{prefix}t[emp]mute -» *muta um usuário por um tempo determinado*", inline=False)
+	help_embed.add_field(name="Administrativo", value=f"\n{prefix}clear -» *limpa as mensagens de um canal*\n{prefix}mute -» *muta um usuário*\n{prefix}ban -» *bane um usuario*\n{prefix}t[emp]mute -» *muta um usuário por um tempo determinado*", inline=False)
 	help_embed.add_field(name="Musica", value=f"\n{prefix}play -» *toca uma musica do youtube ou de um arquivo anexado*\n{prefix}queue -» *mostra a lista de musicas*\n{prefix}stop -» *para a baladinha*\n{prefix}pause -» *pausa a baladinha*\n{prefix}skip -» *pula ou vota para pular a musica*", inline=False)
 	help_embed.add_field(name="Configurações", value=f"\n{prefix}config -» *muda um valor da configuração deste servidor*")	
 	if server_info['commands'] == "0":
