@@ -9,4 +9,4 @@ import dhooks
 from pathlib import Path
 import string
 def handler(message, client):
-	return client.send_message(message.channel, "Teste module top")
+	return await client.send_message(message.channel, "Teste module top")
