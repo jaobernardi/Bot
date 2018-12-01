@@ -27,10 +27,11 @@ def ServerInfo(id):
 			x['id'] = id
 			f.write(json.dumps(x))
 			return x
-@client.event
+
 def ComoUsar(command, args, exempleagrs):
 	embed=discord.Embed(title=f"{command}", description=f"Aqui está a sintaxe do comando `{command}`\n`{command} {args}`\nExemplo de uso: `{command} {exempleagrs}`")
 	return embed
+@client.event
 async def on_message(message):
 	server_info = ServerInfo(f"{message.server.id}")
 	prefix = server_info['prefix']
