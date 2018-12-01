@@ -82,16 +82,12 @@ async def on_message(message):
 		if command(prefix + "help"):
 			await client.send_message(message.channel, embed=help_embed)
 		if command(prefix + "say"):
-			try:
-				say = " ".join(args[1:])
-				if len(say) >= 1:
-					say=discord.Embed(color=0x2C2F33, title=" ", description=f"{say}")
-					await client.send_message(message.channel, embed=say)
-				elif len(say) =< 0:
-					await client.send_message(message.channel, embed=ComoUsar("say", "mensagem", "Eu sou lindo"))
-			except Exception as exception:	
-				if type(exception).__name__ == "HTTPException":
-					await client.send_message(message.channel, embed=ComoUsar("say", "mensagem", "Eu sou lindo"))
+			say = " ".join(args[1:])
+			if len(say) >= 1:
+				say=discord.Embed(color=0x2C2F33, title=" ", description=f"{say}")
+				await client.send_message(message.channel, embed=say)
+			else:
+				await client.send_message(message.channel, embed=ComoUsar("say", "mensagem", "Eu sou lindo"))
 		elif command(prefix + "keygen"):
 			if message.server.id == '513142267654176784':
 				KeyGen()
