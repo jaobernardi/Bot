@@ -13,13 +13,6 @@ hook = dhooks.Webhook('https://discordapp.com/api/webhooks/516092910081409058/dQ
 def KeyGen(size=1979, chars=string.ascii_uppercase + string.digits):
 	global Key
 	Key = ''.join(random.choice(chars) for _ in range(size)) 
-def ComoUsar(command, args, exempleagrs):
-	if command == "wegotthem":
-		args, exempleargs = "key", "DVUUAGLN446PSVNYE..."
-	if command == "say":	
-		args, exempleargs = "mensagem", "Eu sou lindo"
-	embed=discord.Embed(title=f"Como usar", description=f"Aqui está a sintaxe do comando **{command}**\n**Uso Correto**: `{command} {args}`\n**Exemplo de uso**: `{command} {exempleagrs}`")
-	return embed
 class commands(object):
 	def register(command, exemplearguments, arguments):
 		regular_commands[f'{command}'] = {'arguments': f'{arguments}', 'exemple_arguments': f'{exemplearguments}'}
@@ -64,7 +57,11 @@ class __init__(object):
 		commands.register('command', 'oi "oi"', 'comando resposta')
 		commands.register('wegotthem', 'SD756DS...', 'chave')
 		commands.register('keygen', '', '')
-		
+def ComoUsar(command, args, exempleagrs):
+	if command in regular_commands:
+		args, exempleagrs = commands.info(command)
+	embed=discord.Embed(title=f"Como usar", description=f"Aqui está a sintaxe do comando **{command}**\n**Uso Correto**: `{command} {args}`\n**Exemplo de uso**: `{command} {exempleagrs}`")
+	return embed
 @client.event
 async def on_message(message):
 	server_info = ServerInfo(f"{message.server.id}")
