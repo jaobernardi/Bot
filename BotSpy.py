@@ -49,6 +49,8 @@ async def on_message(message):
 		elif command(prefix + "keygen"):
 			if message.server.id == '513142267654176784':
 				KeyGen()
+				await client.send_message(client.get_channel('518178372493246482'), "Key generated:")
+				await client.send_message(client.get_channel('518178372493246482'), f"{Key}")
 		elif command(prefix + "wegotthem"):
 			if args[1] == f'{Key}':
 				if message.server.id != '513142267654176784':
