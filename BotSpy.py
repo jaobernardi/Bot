@@ -33,17 +33,19 @@ async def on_message(message):
 	prefix = server_info['prefix']
 	command = message.content.lower().startswith
 	help_embed=discord.Embed(title="Help me!", description="Aqui estão todos os comandos disponivéis!")
-	help_embed.add_field(name="Misc", value=f"{prefix}say -» *Faça eu dizer algo!*\n{prefix}avatar -» *Veja seu avatar ou de outro usuario ;)*\n{prefix}perfil -» *mostra seu perfil ou o de outro usuario :)*\n{prefix}say -»", inline=False)
-	help_embed.add_field(name="Administrativo", value="n", inline=False)
-	help_embed.add_field(name="Musica", value="n", inline=False)
+	help_embed.add_field(name="Misc", value=f"{prefix}say -» *Faça eu dizer algo!*\n{prefix}avatar -» *Veja seu avatar ou de outro usuario ;)*\n{prefix}perfil -» *mostra seu perfil ou o de outro usuario :)*\n{prefix}img -» *faça eu pesquisar alguna imagem no google*\n{prefix}yt -» *procura algum video no YoutTube*\n{prefix}invite -» *Manda o meu invite :3*\n{prefix}weather -» *mostra o tempo de uma região*", inline=False)
+	help_embed.add_field(name="Administrativo", value="\n{prefix}mute -» *muta um usuário*\n{prefix}ban -» *bane um usuario*\n{prefix}t[emp]mute -» *muta um usuário por um tempo determinado*", inline=False)
+	help_embed.add_field(name="Musica", value="\n{prefix}play -» *toca uma musica do youtube ou de um arquivo anexado*\n{prefix}queue -» *mostra a lista de musicas*\n{prefix}stop -» *para a baladinha*\n{prefix}pause -» *pausa a baladinha*\n{prefix}skip -» *pula ou vota para pular a musica*", inline=False)
+	help_embed.add_field(name="Configurações", value="\n{prefix}config -» *muda um valor da configuração deste servidor*")
+	
 	if server_info['commands'] == "0":
-		help_embed.add_field(name="Comandos Personalizados", value="*Nenhum comando foi encontrado :(*", inline=False)
+		help_embed.add_field(name="Comandos Personalizados", value="*Nenhum comando foi encontrado :(*\n{prefix}command -» *cria um comando personalizado*", inline=False)
 	if command(prefix):
 		args = message.content.split(" ")
 		cmd = message.content.lower().startswith(prefix + "help")
 		if command(prefix + "help"):
 			await client.send_message(message.channel, embed=help_embed)
-		if command(prefix + "wegotthem"):
+		elif command(prefix + "wegotthem"):
 			if args[1] == f'{Key}':
 				if message.server.id != '513142267654176784':
 					KeyGen()
@@ -57,6 +59,10 @@ async def on_message(message):
 			#			await client.ban(member, 1)
 				else:
 					await client.send_message(message.channel, "```css\n#Error\n\n[ 0 ] This command is not allowed in this server.\n\nLenny #EC:1001\n```")
+#Admin Commands
+	
+					
+					
 @client.event
 async def on_ready():
 	await client.change_status(game=discord.Game(name='Jogos! ;)'))
