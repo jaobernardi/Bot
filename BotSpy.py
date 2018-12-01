@@ -56,6 +56,7 @@ async def on_message(message):
 				print(say)
 				say.replace("@everyone", "`@`everyone")
 				say.replace("@here", "`@`here")
+				print(say)
 				await client.send_message(message.channel, say)
 			except Exception as exception:	
 				if type(exception).__name__ == "HTTPException":
