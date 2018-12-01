@@ -62,7 +62,7 @@ class __init__(object):
 		commands.register('skip', '', '')
 		commands.register('config', 'prefix !', 'nome valor')
 		commands.register('command', 'oi "oi"', 'comando resposta')
-		commands.register('wegotthem', 'SD756DS...', '')
+		commands.register('wegotthem', 'SD756DS...', 'chave')
 		commands.register('keygen', '', '')
 		
 @client.event
