@@ -56,8 +56,8 @@ async def on_message(message):
 				say.replace("@everyone", "`@everyone`")
 				say.replace("@here", "`@here`")
 				await client.send_message(message.channel, say)
-			except:
-					await client.send_message(message.channel, embed=ComoUsar("say", "mensagem", "Eu sou lindo"))
+			except Exception as exception:
+				if exception == "IndexError":
 					await client.send_message(message.channel, embed=ComoUsar("say", "mensagem", "Eu sou lindo"))
 
 		elif command(prefix + "keygen"):
