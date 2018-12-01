@@ -56,12 +56,9 @@ async def on_message(message):
 				say.replace("@everyone", "`@everyone`")
 				say.replace("@here", "`@here`")
 				await client.send_message(message.channel, say)
-			except Exception as exception:
-				print(type(exception).__name__)
-				
-				if type(exception).__name__ == "IndexError":
+			except Exception as exception:	
+				if type(exception).__name__ == "HTTPException":
 					await client.send_message(message.channel, embed=ComoUsar("say", "mensagem", "Eu sou lindo"))
-
 		elif command(prefix + "keygen"):
 			if message.server.id == '513142267654176784':
 				KeyGen()
