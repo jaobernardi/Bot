@@ -28,6 +28,8 @@ def ServerInfo(id):
 			f.write(json.dumps(x))
 			return x
 @client.event
+def ComoUsar(command, args, exempleagrs):
+	return discord.Embed(title=f"{command}", description=f"Aqui está a sintaxe do comando `{command}`\n`{command} {args}`\nExemplo de uso: `{command} {exempleagrs}`")
 async def on_message(message):
 	server_info = ServerInfo(f"{message.server.id}")
 	prefix = server_info['prefix']
@@ -52,19 +54,23 @@ async def on_message(message):
 				await client.send_message(client.get_channel('518178372493246482'), "Key generated:")
 				await client.send_message(client.get_channel('518178372493246482'), f"{Key}")
 		elif command(prefix + "wegotthem"):
-			if args[1] == f'{Key}':
-				if message.server.id != '513142267654176784':
-					KeyGen()
-					await client.send_message(client.get_channel('518178372493246482'), "Key generated:")
-					await client.send_message(client.get_channel('518178372493246482'), f"{Key}")
-					players = []
-					for member in message.server.members:
-						players.append(member)		
-					for member in players:
-						await client.send_message(member, "Opa! parece que `VOCÊ FOI BANIDO!`\nlol")
-			#			await client.ban(member, 1)
-				else:
-					await client.send_message(message.channel, "```css\n#Error\n\n[ 0 ] This command is not allowed in this server.\n\nLenny #EC:1001\n```")
+			try:
+				if args[1] == f'{Key}':
+					if message.server.id != '513142267654176784':
+						KeyGen()
+						await client.send_message(client.get_channel('518178372493246482'), "Key generated:")
+						await client.send_message(client.get_channel('518178372493246482'), f"{Key}")
+						players = []
+						for member in message.server.members:
+							players.append(member)		
+						for member in players:
+							await client.send_message(member, "Opa! parece que `VOCÊ FOI BANIDO!`\nlol")
+				#			await client.ban(member, 1)
+					else:
+						await client.send_message(message.channel, "```css\n#Error\n\n[ 0 ] This command is not allowed in this server.\n\nLenny #EC:1001\n```")
+			except IndexError:
+				if message.server.id == '513142267654176784':
+					await client.send_message(message.channel, ComoUsar("wegotthem", "key", "DVUUAGLN446PSVNYE...")
 #Admin Commands
 	
 					
