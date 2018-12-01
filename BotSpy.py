@@ -84,7 +84,7 @@ async def on_message(message):
 		if command(prefix + "say"):
 			try:
 				say = " ".join(args[1:])
-				if len(say) => 1:
+				if len(say) >= 1:
 					say=discord.Embed(color=0x2C2F33, title=" ", description=f"{say}")
 					await client.send_message(message.channel, embed=say)
 				elif len(say) =< 0:
