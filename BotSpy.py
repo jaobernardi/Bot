@@ -64,7 +64,7 @@ def ComoUsar(command, args, exempleagrs):
 	return embed
 @client.event
 async def on_message(message):
-	server_info = ServerInfo(f"{message.server.id}")
+	server_info = server.getInfo(f"{message.server.id}")
 	prefix = server_info['prefix']
 	command = message.content.lower().startswith
 	help_embed=discord.Embed(title="Help me!", description="Aqui estão todos os comandos disponivéis!")
