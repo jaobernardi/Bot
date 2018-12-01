@@ -9,5 +9,4 @@ import dhooks
 from pathlib import Path
 import string
 def handler(message, client):
-	if message.content == "oi":
-		return client.send_message(message.channel, "Teste module top")
+	return client.send_message(message.channel, "Teste module top")
