@@ -53,6 +53,7 @@ async def on_message(message):
 		if command(prefix + "say"):
 			try:
 				say = " ".join(args[1:])
+				print(say)
 				say.replace("@everyone", "`@everyone`")
 				say.replace("@here", "`@here`")
 				await client.send_message(message.channel, say)
