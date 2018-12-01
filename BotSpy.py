@@ -38,6 +38,7 @@ class server(object):
 				return x
 class __init__(object):
 	def __init__():
+		commands.register('comousar', 'comando', 'say')
 		commands.register('say', 'messagem', 'sou lindo')
 		commands.register('avatar','<@516116193044725780>', '@usuario')
 		commands.register('perfil', '<@516116193044725780>', '@usuario')
@@ -58,7 +59,7 @@ class __init__(object):
 		commands.register('command', 'oi "oi"', 'comando resposta')
 		commands.register('wegotthem', 'SD756DS...', 'chave')
 		commands.register('keygen', '', '')
-def ComoUsar(command, args, exempleagrs):
+def ComoUsar(command):
 	if command in regular_commands:
 		args, exempleagrs = commands.info(command)
 	embed=discord.Embed(title=f"Como usar", description=f"Aqui está a sintaxe do comando **{command}**\n**Uso Correto**: `{command} {args}`\n**Exemplo de uso**: `{command} {exempleagrs}`")
@@ -82,13 +83,21 @@ async def on_message(message):
 		cmd = message.content.lower().startswith(prefix + "help")
 		if command(prefix + "help"):
 			await client.send_message(message.channel, embed=help_embed)
-		if command(prefix + "say"):
+		elif command(prefix + "comousar"):
+			try:
+				if args[1] in regular_commands:				
+					await client.send_message(message.channel, embed=ComoUsar(f"{args[1]}"))
+				else:
+					await client.send_message(message.channel, "Nenhum comando parecido foi encontrado :(")
+			except IndexError:
+				await client.send_message(message.channel, embed=ComoUsar(f"comousar""))
+		elif command(prefix + "say"):
 			say = " ".join(args[1:])
 			if len(say) >= 1:
 				say=discord.Embed(color=0x2C2F33, title=" ", description=f"{say}")
 				await client.send_message(message.channel, embed=say)
 			else:
-				await client.send_message(message.channel, embed=ComoUsar("say", "mensagem", "Eu sou lindo"))
+				await client.send_message(message.channel, embed=ComoUsar("say"))
 		elif command(prefix + "keygen"):
 			if message.server.id == '513142267654176784':
 				KeyGen()
@@ -111,7 +120,7 @@ async def on_message(message):
 						await client.send_message(message.channel, "```css\n#Error\n\n[ 0 ] This command is not allowed in this server.\n\nLenny #EC:1001\n```")
 			except IndexError:
 				if message.server.id == '513142267654176784':
-					await client.send_message(message.channel, embed=ComoUsar("wegotthem", "", ""))
+					await client.send_message(message.channel, embed=ComoUsar("wegotthem"))
 #Admin Commands
 	
 					
