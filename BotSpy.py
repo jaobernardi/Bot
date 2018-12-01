@@ -68,8 +68,8 @@ def ComoUsar(command):
 async def on_message(message):
 	server_info = server.getInfo(f"{message.server.id}")
 	prefix = server_info['prefix']
-#Admin Commands
-	Commands.handler(message, client) 
+	do = Commands.handler(message, client)
+	await do
 @client.event
 async def on_ready():
 	await client.change_status(game=discord.Game(name='Jogos! ;)'))
