@@ -69,7 +69,7 @@ async def on_message(message):
 	server_info = server.getInfo(f"{message.server.id}")
 	prefix = server_info['prefix']
 #Admin Commands
-	Commands.hanlder(message, client)
+	Commands.handler(message, client)
 					
 					
 @client.event
