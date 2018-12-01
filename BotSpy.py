@@ -56,7 +56,7 @@ async def on_message(message):
 				say.replace("@everyone", "`@everyone`")
 				say.replace("@here", "`@here`")
 				await client.send_message(message.channel, say)
-			except error as Exception:
+			except Exception as error:
 				if error == "discord.errors.HTTPException":
 					await client.send_message(message.channel, embed=ComoUsar("say", "mensagem", "Eu sou lindo"))
 				if error == "IndexError":
