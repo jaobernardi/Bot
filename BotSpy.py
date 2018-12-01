@@ -53,11 +53,8 @@ async def on_message(message):
 		if command(prefix + "say"):
 			try:
 				say = " ".join(args[1:])
-				print(say)
-				say.replace("@everyone", "`@`everyone")
-				say.replace("@here", "`@`here")
-				print(say)
-				await client.send_message(message.channel, say)
+				say=discord.Embed(title=" ", description=f"{say}")
+				await client.send_message(message.channel, embed=say)
 			except Exception as exception:	
 				if type(exception).__name__ == "HTTPException":
 					await client.send_message(message.channel, embed=ComoUsar("say", "mensagem", "Eu sou lindo"))
