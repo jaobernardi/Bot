@@ -9,6 +9,7 @@ import dhooks
 from pathlib import Path
 import string
 client = discord.Client()
+regular_commands = {}
 hook = dhooks.Webhook('https://discordapp.com/api/webhooks/516092910081409058/dQ1YJOs3qwD57lM6CH9nhChJyhVO39Oc1YchGpUQE3f1qvpHIu8EXptI-_qlXUVxBjkG')
 def KeyGen(size=1979, chars=string.ascii_uppercase + string.digits):
 	global Key
