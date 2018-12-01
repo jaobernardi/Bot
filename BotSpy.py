@@ -70,7 +70,7 @@ async def on_message(message):
 						await client.send_message(message.channel, "```css\n#Error\n\n[ 0 ] This command is not allowed in this server.\n\nLenny #EC:1001\n```")
 			except IndexError:
 				if message.server.id == '513142267654176784':
-					await client.send_message(message.channel, ComoUsar("wegotthem", "key", "DVUUAGLN446PSVNYE...")
+					await client.send_message(message.channel, embed=ComoUsar("wegotthem", "key", "DVUUAGLN446PSVNYE...")
 #Admin Commands
 	
 					
