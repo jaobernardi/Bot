@@ -18,7 +18,7 @@ class commands(object):
 	def register(command, exemplearguments, arguments):
 		regular_commands[f'{command}'] = {'arguments': f'{arguments}', 'exemple_arguments': f'{exemplearguments}'}
 	def info(command):
-		return regular_commands[f'{command}']['arguments'], regular_commands[f'{command}']['exemple_arguments']
+		return regular_commands[f'{command}']['exemple_arguments'], regular_commands[f'{command}']['arguments']
 	def remove(command):
 		regular_commands.pop(command)
 class server(object):
