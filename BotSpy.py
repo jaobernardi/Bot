@@ -56,8 +56,11 @@ async def on_message(message):
 				say.replace("@everyone", "`@everyone`")
 				say.replace("@here", "`@here`")
 				await client.send_message(message.channel, say)
-			except IndexError:
-				await client.send_message(message.channel, embed=ComoUsar("say", "mensagem", "Eu sou lindo"))
+			except error as Exception:
+				if error == "discord.errors.HTTPException":
+					await client.send_message(message.channel, embed=ComoUsar("say", "mensagem", "Eu sou lindo"))
+				if error == "IndexError":
+					await client.send_message(message.channel, embed=ComoUsar("say", "mensagem", "Eu sou lindo"))
 
 		elif command(prefix + "keygen"):
 			if message.server.id == '513142267654176784':
