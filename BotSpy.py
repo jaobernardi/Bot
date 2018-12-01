@@ -29,7 +29,7 @@ def ServerInfo(id):
 			return x
 
 def ComoUsar(command, args, exempleagrs):
-	embed=discord.Embed(title=f"Como usar", description=f"Aqui está a sintaxe do comando **{command}**\n`{command} {args}`\n**Exemplo de uso**: `{command} {exempleagrs}`")
+	embed=discord.Embed(title=f"Como usar", description=f"Aqui está a sintaxe do comando **{command}**\n**Uso Correto**: `{command} {args}`\n**Exemplo de uso**: `{command} {exempleagrs}`")
 	return embed
 @client.event
 async def on_message(message):
