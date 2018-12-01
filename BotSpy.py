@@ -50,6 +50,15 @@ async def on_message(message):
 		cmd = message.content.lower().startswith(prefix + "help")
 		if command(prefix + "help"):
 			await client.send_message(message.channel, embed=help_embed)
+		elif command(prefix + "say"):
+			try:
+				say = " ".join(args[1:])
+				say.replace("@everyone", "`@everyone`")
+				say.replace("@here", "`@here`")
+				await client.send_message(message.channel, say)
+			except IndexError:
+				await client.send_message(message.channel, embed=ComoUsar("say", "mensagem", "Eu sou lindo"))
+
 		elif command(prefix + "keygen"):
 			if message.server.id == '513142267654176784':
 				KeyGen()
