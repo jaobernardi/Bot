@@ -65,6 +65,7 @@ def ComoUsar(command):
 	embed=discord.Embed(title=f"Como usar", description=f"Aqui está a sintaxe do comando **{command}**\n**Uso Correto**: `{command} {args}`\n**Exemplo de uso**: `{command} {exempleagrs}`")
 	return embed
 @client.event
+
 async def on_message(message):
 	server_info = server.getInfo(f"{message.server.id}")
 	prefix = server_info['prefix']
@@ -90,7 +91,7 @@ async def on_message(message):
 				else:
 					await client.send_message(message.channel, "Nenhum comando parecido foi encontrado :(")
 			except IndexError:
-				await client.send_message(message.channel, embed=ComoUsar(f"comousar""))
+				await client.send_message(message.channel, embed=ComoUsar(f"comousar"))
 		elif command(prefix + "say"):
 			say = " ".join(args[1:])
 			if len(say) >= 1:
