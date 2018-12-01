@@ -87,7 +87,7 @@ async def on_message(message):
 				if len(say) => 1:
 					say=discord.Embed(color=0x2C2F33, title=" ", description=f"{say}")
 					await client.send_message(message.channel, embed=say)
-				else:
+				elif len(say) =< 0:
 					await client.send_message(message.channel, embed=ComoUsar("say", "mensagem", "Eu sou lindo"))
 			except Exception as exception:	
 				if type(exception).__name__ == "HTTPException":
