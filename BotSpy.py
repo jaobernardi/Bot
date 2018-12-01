@@ -57,7 +57,8 @@ async def on_message(message):
 				say.replace("@here", "`@here`")
 				await client.send_message(message.channel, say)
 			except Exception as exception:
-				print(exception)
+				print(type(exception).__name__)
+				
 				if type(exception).__name__ == "IndexError":
 					await client.send_message(message.channel, embed=ComoUsar("say", "mensagem", "Eu sou lindo"))
 
