@@ -127,7 +127,7 @@ async def on_message(message):
 			os.system(f'wget {url}')
 			for file in os.listdir():
 				if file.endswith(".png"):
-					await bot.send_file(channel, "filepath.png", content="...", filename="...")
+					await client.send_file(channel, "filepath.png", content="...", filename="...")
 
 			
 @client.event
