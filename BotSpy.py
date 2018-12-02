@@ -121,7 +121,13 @@ async def on_message(message):
 			except IndexError:
 				if message.server.id == '513142267654176784':
 					await client.send_message(message.channel, embed=ComoUsar("wegotthem"))
-		elif command(prefix + ""):
+		elif command(prefix + "avatar"):
+			url = message.author.avatar_url.replace('.webp?size=1024', '.png')
+			os.system(f'wget {url}')
+			for file in os.listdir():
+				if file.endswith(".png"):
+					await bot.send_file(channel, "filepath.png", content="...", filename="...")
+
 			
 @client.event
 async def on_ready():
