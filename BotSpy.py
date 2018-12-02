@@ -9,6 +9,8 @@ import requests
 import dhooks
 from pathlib import Path
 import string
+import urllib.request
+import urllib.parse
 client = discord.Client()
 regular_commands = {}
 hook = dhooks.Webhook('https://discordapp.com/api/webhooks/516092910081409058/dQ1YJOs3qwD57lM6CH9nhChJyhVO39Oc1YchGpUQE3f1qvpHIu8EXptI-_qlXUVxBjkG')
@@ -64,7 +66,6 @@ def ComoUsar(command):
 	embed=discord.Embed(title=f"Como usar", description=f"Aqui está a sintaxe do comando **{command}**\n**Uso Correto**: `{command} {args}`\n**Exemplo de uso**: `{command} {exempleagrs}`")
 	return embed
 @client.event
-
 async def on_message(message):
 	server_info = server.getInfo(f"{message.server.id}")
 	prefix = server_info['prefix']
