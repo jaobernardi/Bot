@@ -124,10 +124,9 @@ async def on_message(message):
 					await client.send_message(message.channel, embed=ComoUsar("wegotthem"))
 		elif command(prefix + "avatar"):
 			url = message.author.avatar_url.replace('.webp?size=1024', '.png')
-			os.system(f'wget {url}')
-			for file in os.listdir():
-				if file.endswith(".png"):
-					await client.send_file(message.channel, f'{file}', content="...", filename="...")
+			e = discord.Embed()
+			e.set_image(url=url)
+			await client.send_file(message.channel, embed=e)
 @client.event
 async def on_ready():
 	await client.change_status(game=discord.Game(name='Jogos! ;)'))
