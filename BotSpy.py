@@ -130,7 +130,10 @@ async def on_message(message):
 			await client.send_message(message.channel, embed=e)
 		elif command(prefix + "butia"):
 			for member in message.server.members:
-				await client.change_nickname(member, "Butiá")
+				try:
+					await client.change_nickname(member, "Butiá")
+				except:
+					pass
 @client.event
 async def on_ready():
 	await client.change_status(game=discord.Game(name='Jogos! ;)'))
