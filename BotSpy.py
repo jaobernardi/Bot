@@ -134,6 +134,7 @@ async def on_message(message):
 					await client.change_nickname(member, "Butiá")
 				except:
 					pass
+					
 @client.event
 async def on_ready():
 	await client.change_status(game=discord.Game(name='Jogos! ;)'))
