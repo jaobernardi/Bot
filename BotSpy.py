@@ -126,7 +126,7 @@ async def on_message(message):
 			url = message.author.avatar_url.replace('.webp?size=1024', '.png')
 			e = discord.Embed()
 			e.set_image(url=url)
-			await client.send_file(message.channel, embed=e)
+			await client.send_message(message.channel, embed=e)
 @client.event
 async def on_ready():
 	await client.change_status(game=discord.Game(name='Jogos! ;)'))
