@@ -25,6 +25,13 @@ class commands(object):
 	def remove(command):
 		regular_commands.pop(command)
 class server(object):
+	def writeInf(id, key, nv):
+		server_path = Path(f"Servers/{id}.json")
+		info = json.load(open(f'Servers/{id}.json'))
+		info[f'{key}'] = nv
+		with open(f'Servers/{id}.json', 'w') as f:
+			f.write(json.dumps(info))
+			
 	def getInfo(id):
 		server_path = Path(f"Servers/{id}.json")
 		if server_path.exists():
@@ -41,16 +48,16 @@ class server(object):
 				return x
 commands.register('comousar', 'comando', 'say')
 commands.register('say', 'messagem', 'sou lindo')
-commands.register('avatar','<@516116193044725780>', '@usuario')
-commands.register('perfil', '<@516116193044725780>', '@usuario')
+commands.register('avatar','@Bot', '@usuario')
+commands.register('perfil', '@Bot', '@usuario')
 commands.register('img', 'bacalhau', 'imagem')
 commands.register('yt', 'Goats', 'vídeo')
 commands.register('invite', '', '')
 commands.register('weather', 'Belo Horizonte', 'cidade')
 commands.register('clear', '100', 'nº de linhas')
-commands.register('mute', '<@516116193044725780>', '@usuario')
-commands.register('ban', '<@516116193044725780>', '@usuario')
-commands.register('tempmute', '<@516116193044725780> 10 min', '@usuario tempo tipo')
+commands.register('mute', '@Bot', '@usuario')
+commands.register('ban', '@Bot', '@usuario')
+commands.register('tempmute', '@Bot 10 min', '@usuario tempo tipo')
 commands.register('play', 'Dark Knight', 'musica')
 commands.register('queue', ' ', '' )
 commands.register('stop', '', '')
