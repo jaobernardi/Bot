@@ -149,6 +149,7 @@ async def on_message(message):
 			print(args[1]) 
 			if args[1] == "--server":
 				url = message.server.icon
+				print(url)
 				e = discord.Embed()
 				e.set_image(url=url)
 			else:
