@@ -74,8 +74,11 @@ def ComoUsar(command):
 	return embed
 @client.event
 async def on_message(message):
-	server_info = server.getInfo(f"{message.server.id}")
-	prefix = server_info['prefix']
+	try:
+		server_info = server.getInfo(f"{message.server.id}")
+		prefix = server_info['prefix']
+	except:
+		prefix = ""	
 	command = message.content.lower().startswith
 	if command(prefix):
 		args = message.content.split(" ")
