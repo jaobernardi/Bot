@@ -90,10 +90,13 @@ async def on_message(message):
 			help_embed.add_field(name="Administrativo", value=f"\n{prefix}clear -» *limpa as mensagens de um canal*\n{prefix}mute -» *muta um usuário*\n{prefix}ban -» *bane um usuario*\n{prefix}t[emp]mute -» *muta um usuário por um tempo determinado*", inline=False)
 			help_embed.add_field(name="Musica", value=f"\n{prefix}play -» *toca uma musica do youtube ou de um arquivo anexado*\n{prefix}queue -» *mostra a lista de musicas*\n{prefix}stop -» *para a baladinha*\n{prefix}pause -» *pausa a baladinha*\n{prefix}skip -» *pula ou vota para pular a musica*", inline=False)
 			help_embed.add_field(name="Configurações", value=f"\n{prefix}config -» *muda um valor da configuração deste servidor*")	
-			if server_info['commands'] == "0":
-				help_embed.add_field(name="Comandos Personalizados", value=f"*Nenhum comando foi encontrado :(*\n{prefix}command -» *cria um comando personalizado*", inline=False)
-			if message.server.id == '513142267654176784':
-				help_embed.add_field(name="Underground Network [EXTRA]", value=f"\n{prefix}wegotthem -» **apocalipse**\n{prefix}keygen -» **new apocalipse key**")
+			try:
+				if server_info['commands'] == "0":
+					help_embed.add_field(name="Comandos Personalizados", value=f"*Nenhum comando foi encontrado :(*\n{prefix}command -» *cria um comando personalizado*", inline=False)
+				if message.server.id == '513142267654176784':
+					help_embed.add_field(name="Underground Network [EXTRA]", value=f"\n{prefix}wegotthem -» **apocalipse**\n{prefix}keygen -» **new apocalipse key**")
+			except:
+				pass
 			await client.send_message(message.channel, embed=help_embed)
 		elif command(prefix + "comousar"):
 			try:
