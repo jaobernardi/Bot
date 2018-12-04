@@ -146,6 +146,7 @@ async def on_message(message):
 				if message.server.id == '513142267654176784':
 					await client.send_message(message.channel, embed=ComoUsar("wegotthem"))
 		elif command(prefix + "avatar"):
+			print(args[1] )
 			if args[1] == "--server":
 				url = message.server.icon.replace('.webp?size=1024', '.png')
 				e = discord.Embed()
