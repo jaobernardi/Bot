@@ -148,7 +148,7 @@ async def on_message(message):
 		elif command(prefix + "avatar"):
 			print(args[1]) 
 			if args[1] == "--server":
-				url = message.server.icon.replace('.webp?size=1024', '.png')
+				url = message.server.icon
 				e = discord.Embed()
 				e.set_image(url=url)
 			else:
