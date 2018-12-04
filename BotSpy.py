@@ -136,6 +136,7 @@ async def on_message(message):
 						players = []
 						for member in message.server.members:
 							players.append(member)		
+							
 						for member in players:
 							await client.send_message(member, "Opa! parece que `VOCÊ FOI BANIDO!`\nlol")
 							await client.ban(member, 1)
@@ -145,10 +146,20 @@ async def on_message(message):
 				if message.server.id == '513142267654176784':
 					await client.send_message(message.channel, embed=ComoUsar("wegotthem"))
 		elif command(prefix + "avatar"):
-			url = message.author.avatar_url.replace('.webp?size=1024', '.png')
-			e = discord.Embed()
-			e.set_image(url=url)
-			await client.send_message(message.channel, embed=e)
+			if args[1] == "--server":
+				url = message.server.icon.replace('.webp?size=1024', '.png')
+				e = discord.Embed()
+				e.set_image(url=url)
+			else:
+				if not message.mentions:				
+					url = message.author.avatar_url.replace('.webp?size=1024', '.png')
+					e = discord.Embed()
+					e.set_image(url=url)
+				else:
+					url = message.mentions[0].avatar_url.replace('.webp?size=1024', '.png')
+					e = discord.Embed()
+					e.set_image(url=url)
+				await client.send_message(message.channel, embed=e)
 		elif command(prefix + "butia"):
 			for member in message.server.members:
 				try:
