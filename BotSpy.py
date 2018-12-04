@@ -25,6 +25,11 @@ class commands(object):
 	def remove(command):
 		regular_commands.pop(command)
 class server(object):
+	def writeDefault(id):
+		with open(f'Servers/{id}.json', 'w') as f:
+			x = json.load(open(f'ServerBase.json'))
+			x['id'] = id
+			f.write(json.dumps(x))
 	def writeInf(id, key, nv):
 		server_path = Path(f"Servers/{id}.json")
 		info = json.load(open(f'Servers/{id}.json'))
@@ -72,6 +77,9 @@ def ComoUsar(command):
 		args, exempleagrs = commands.info(command)
 	embed=discord.Embed(title=f"Como usar", description=f"Aqui está a sintaxe do comando **{command}**\n**Uso Correto**: `{command} {args}`\n**Exemplo de uso**: `{command} {exempleagrs}`")
 	return embed
+@client.event
+async def on_server_join(server):
+	server.writeDefault(f"{server.id}")
 @client.event
 async def on_message(message):
 	try:
@@ -150,7 +158,7 @@ async def on_message(message):
 					
 @client.event
 async def on_ready():
-	await client.change_status(game=discord.Game(name='Jogos! ;)'))
+	await client.change_presence(game=discord.Game(name='Jogos! ;)'), status=discord.Status("offline"))
 	KeyGen()
 	print(f"[+] Logged as {client.user.name}")
 	await client.send_message(client.get_channel('518178372493246482'), "Key generated:")
